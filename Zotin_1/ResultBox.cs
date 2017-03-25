@@ -147,5 +147,11 @@ namespace Zotin_1
             HystogramForm hf = new HystogramForm(R, G, B, rName, gName, bName, this.Text + " from mode " + mode);
             hf.Show();
         }
+
+        private void noizeGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NoizeGenForm ng = new NoizeGenForm(this, mode);
+            ng.ShowDialog();
+        }
     }
 }
