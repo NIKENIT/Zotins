@@ -153,5 +153,11 @@ namespace Zotin_1
             NoizeGenForm ng = new NoizeGenForm(this, mode);
             ng.ShowDialog();
         }
+
+        private void modifyUsingHystogramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageCorrectionForm ng = new ImageCorrectionForm(this);
+            ng.ShowDialog();
+        }
     }
 }

@@ -65,6 +65,12 @@
     <Compile Include="HystogramForm.Designer.cs">
       <DependentUpon>HystogramForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageCorrectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageCorrectionForm.Designer.cs">
+      <DependentUpon>ImageCorrectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelSettingsChooser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HystogramForm.resx">
       <DependentUpon>HystogramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageCorrectionForm.resx">
+      <DependentUpon>ImageCorrectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelSettingsChooser.resx">
       <DependentUpon>ModelSettingsChooser.cs</DependentUpon>

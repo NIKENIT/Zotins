@@ -411,32 +411,29 @@ namespace Zotin_1
                 }
                 else if (colorMode == "HSL")
                 {
-                else if (colorMode == "HSL")
+                    double H, S, L;
+                    ModelSettingsChooser.ColorToHSL(color, out H, out S, out L);
+                    if (colorChannel == 0)
                     {
-                        double H, S, L;
-                        ModelSettingsChooser.ColorToHSL(color, out H, out S, out L);
-                        if (colorChannel == 0)
-                        {
-                            value1 = getMultiplicativeAdditionalValue((int)H, kmin, kmax, "H");
-                            value2 = getMultiplicativeAdditionalValue((int)(S * 100), kmin, kmax, "S");
-                            value3 = getMultiplicativeAdditionalValue((int)(L * 100), kmin, kmax, "L");
-                            result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(value1, value2, value3));
-                        }
-                        else if (colorChannel == 1)
-                        {
-                            value1 = getMultiplicativeAdditionalValue((int)H, kmin, kmax, "H");
-                            result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(value1, S, L));
-                        }
-                        else if (colorChannel == 2)
-                        {
-                            value2 = getMultiplicativeAdditionalValue((int)(S * 100), kmin, kmax, "S");
-                            result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(H, value2, L));
-                        }
-                        else if (colorChannel == 3)
-                        {
-                            value3 = getMultiplicativeAdditionalValue((int)(L * 100), kmin, kmax, "L");
-                            result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(H, S, value3));
-                        }
+                        value1 = getMultiplicativeAdditionalValue((int)H, kmin, kmax, "H");
+                        value2 = getMultiplicativeAdditionalValue((int)(S * 100), kmin, kmax, "S");
+                        value3 = getMultiplicativeAdditionalValue((int)(L * 100), kmin, kmax, "L");
+                        result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(value1, value2, value3));
+                    }
+                    else if (colorChannel == 1)
+                    {
+                        value1 = getMultiplicativeAdditionalValue((int)H, kmin, kmax, "H");
+                        result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(value1, S, L));
+                    }
+                    else if (colorChannel == 2)
+                    {
+                        value2 = getMultiplicativeAdditionalValue((int)(S * 100), kmin, kmax, "S");
+                        result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(H, value2, L));
+                    }
+                    else if (colorChannel == 3)
+                    {
+                        value3 = getMultiplicativeAdditionalValue((int)(L * 100), kmin, kmax, "L");
+                        result.SetPixel(x, y, ModelSettingsChooser.HSLToColor(H, S, value3));
                     }
                 }
                 else if (colorMode == "HSV")

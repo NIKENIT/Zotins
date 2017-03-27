@@ -320,5 +320,10 @@ namespace Zotin_1
                 }
             OwnerForm.updatePicturebox();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            OwnerForm.originalImage = new Bitmap(OwnerForm.localImage);
+        }
     }
 }

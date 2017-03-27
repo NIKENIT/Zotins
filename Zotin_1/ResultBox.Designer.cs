@@ -34,6 +34,7 @@
             this.colorBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hystogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noizeGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyUsingHystogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,8 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorBalanceToolStripMenuItem,
             this.hystogramToolStripMenuItem,
-            this.noizeGeneratorToolStripMenuItem});
+            this.noizeGeneratorToolStripMenuItem,
+            this.modifyUsingHystogramToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -75,23 +77,30 @@
             // colorBalanceToolStripMenuItem
             // 
             this.colorBalanceToolStripMenuItem.Name = "colorBalanceToolStripMenuItem";
-            this.colorBalanceToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.colorBalanceToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.colorBalanceToolStripMenuItem.Text = "Color balance";
             this.colorBalanceToolStripMenuItem.Click += new System.EventHandler(this.colorBalanceToolStripMenuItem_Click);
             // 
             // hystogramToolStripMenuItem
             // 
             this.hystogramToolStripMenuItem.Name = "hystogramToolStripMenuItem";
-            this.hystogramToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.hystogramToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.hystogramToolStripMenuItem.Text = "Hystogram";
             this.hystogramToolStripMenuItem.Click += new System.EventHandler(this.hystogramToolStripMenuItem_Click);
             // 
             // noizeGeneratorToolStripMenuItem
             // 
             this.noizeGeneratorToolStripMenuItem.Name = "noizeGeneratorToolStripMenuItem";
-            this.noizeGeneratorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.noizeGeneratorToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.noizeGeneratorToolStripMenuItem.Text = "Noize generator";
             this.noizeGeneratorToolStripMenuItem.Click += new System.EventHandler(this.noizeGeneratorToolStripMenuItem_Click);
+            // 
+            // modifyUsingHystogramToolStripMenuItem
+            // 
+            this.modifyUsingHystogramToolStripMenuItem.Name = "modifyUsingHystogramToolStripMenuItem";
+            this.modifyUsingHystogramToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.modifyUsingHystogramToolStripMenuItem.Text = "Modify using hystogram";
+            this.modifyUsingHystogramToolStripMenuItem.Click += new System.EventHandler(this.modifyUsingHystogramToolStripMenuItem_Click);
             // 
             // ResultBox
             // 
@@ -120,5 +129,6 @@
         private System.Windows.Forms.ToolStripMenuItem colorBalanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hystogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noizeGeneratorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyUsingHystogramToolStripMenuItem;
     }
 }

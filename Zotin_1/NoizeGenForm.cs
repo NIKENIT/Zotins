@@ -112,5 +112,10 @@ namespace Zotin_1
             ownerForm.localImage = new Bitmap(result);
             ownerForm.updatePicturebox();
         }
+
+        private void NoizeGenForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
