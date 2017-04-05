@@ -13,3 +13,4 @@ C:\Users\NIKENIT\documents\visual studio 2015\Projects\Zotin_1\Zotin_1\obj\Debug
 C:\Users\NIKENIT\documents\visual studio 2015\Projects\Zotin_1\Zotin_1\obj\Debug\Zotin_1.csprojResolveAssemblyReference.cache
 C:\Users\NIKENIT\documents\visual studio 2015\Projects\Zotin_1\Zotin_1\obj\Debug\Zotin_1.NoizeGenForm.resources
 C:\Users\NIKENIT\documents\visual studio 2015\Projects\Zotin_1\Zotin_1\obj\Debug\Zotin_1.ImageCorrectionForm.resources
+C:\Users\NIKENIT\documents\visual studio 2015\Projects\Zotin_1\Zotin_1\obj\Debug\Zotin_1.HystogramModificationForm.resources

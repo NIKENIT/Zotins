@@ -35,6 +35,7 @@
             this.hystogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noizeGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyUsingHystogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyUsingHystogramToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,8 @@
             this.colorBalanceToolStripMenuItem,
             this.hystogramToolStripMenuItem,
             this.noizeGeneratorToolStripMenuItem,
-            this.modifyUsingHystogramToolStripMenuItem});
+            this.modifyUsingHystogramToolStripMenuItem,
+            this.modifyUsingHystogramToolStripMenuItem1});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -99,8 +101,15 @@
             // 
             this.modifyUsingHystogramToolStripMenuItem.Name = "modifyUsingHystogramToolStripMenuItem";
             this.modifyUsingHystogramToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.modifyUsingHystogramToolStripMenuItem.Text = "Modify using hystogram";
+            this.modifyUsingHystogramToolStripMenuItem.Text = "Modify using models";
             this.modifyUsingHystogramToolStripMenuItem.Click += new System.EventHandler(this.modifyUsingHystogramToolStripMenuItem_Click);
+            // 
+            // modifyUsingHystogramToolStripMenuItem1
+            // 
+            this.modifyUsingHystogramToolStripMenuItem1.Name = "modifyUsingHystogramToolStripMenuItem1";
+            this.modifyUsingHystogramToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
+            this.modifyUsingHystogramToolStripMenuItem1.Text = "Modify using hystogram";
+            this.modifyUsingHystogramToolStripMenuItem1.Click += new System.EventHandler(this.modifyUsingHystogramToolStripMenuItem1_Click);
             // 
             // ResultBox
             // 
@@ -130,5 +139,6 @@
         private System.Windows.Forms.ToolStripMenuItem hystogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noizeGeneratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyUsingHystogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyUsingHystogramToolStripMenuItem1;
     }
 }

@@ -53,12 +53,13 @@ namespace Zotin_1
 
         public void updatePicturebox()
         {
-            pictureBox1.Image = localImage;
+            pictureBox1.Image = new Bitmap(localImage);
         }
 
         public void revertImage()
         {
-            pictureBox1.Image = originalImage;
+            pictureBox1.Image = new Bitmap(originalImage);
+            localImage = new Bitmap(originalImage);
         }
 
         private void colorBalanceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace Zotin_1
             cbForm.ShowDialog();
         }
 
-        private void CountHystograms(Bitmap image, string mode, out double[] R, out double[] G, out double[] B, out string rName, out string gName, out string bName)
+        public void CountHystograms(string mode, out double[] R, out double[] G, out double[] B, out string rName, out string gName, out string bName)
         {
             //int[] points = new int[100];
             R = new double[256];
@@ -77,11 +78,11 @@ namespace Zotin_1
             gName = "Green";
             bName = "Blue";
             Color color;
-            for (int i = 0; i < originalImage.Width; i++)
+            for (int i = 0; i < localImage.Width; i++)
             {
-                for (int j = 0; j < originalImage.Height; j++)
+                for (int j = 0; j < localImage.Height; j++)
                 {
-                    color = originalImage.GetPixel(i, j);
+                    color = localImage.GetPixel(i, j);
                     if (mode == "RGB")
                     {
                         rName = "Red";
@@ -138,11 +139,27 @@ namespace Zotin_1
             //}
         }
 
+        private double[] getGrayscaleHystogram(Bitmap image)
+        {
+            double[] resultHystogram = new double[256];
+            Color color; 
+            for (int i = 0; i < image.Width; i++)
+            {
+                for (int j = 0; j < image.Height; j++)
+                {
+                    color = image.GetPixel(i, j);
+                    int grayscale = (int)((color.R * 0.3) + (color.G * 0.59) + (color.B * 0.11));
+                    ++resultHystogram[grayscale];
+                }
+            }
+            return resultHystogram;
+        }
+
         private void hystogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             double[] R, G, B;
             string rName, gName, bName;
-            CountHystograms(originalImage, mode, out R, out G, out B, out rName, out gName, out bName);
+            CountHystograms(mode, out R, out G, out B, out rName, out gName, out bName);
 
             HystogramForm hf = new HystogramForm(R, G, B, rName, gName, bName, this.Text + " from mode " + mode);
             hf.Show();
@@ -158,6 +175,13 @@ namespace Zotin_1
         {
             ImageCorrectionForm ng = new ImageCorrectionForm(this);
             ng.ShowDialog();
+        }
+
+        private void modifyUsingHystogramToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            double[] hystogram = getGrayscaleHystogram(originalImage);
+            HystogramModificationForm hmf = new HystogramModificationForm(this, hystogram);
+            hmf.ShowDialog();
         }
     }
 }

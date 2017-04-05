@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -37,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.timeLabel2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +49,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.timeLabel3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,6 +59,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -71,6 +78,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.timeLabel);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.numericUpDown1);
@@ -82,6 +90,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(309, 191);
             this.panel1.TabIndex = 0;
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(169, 167);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(66, 13);
+            this.timeLabel.TabIndex = 33;
+            this.timeLabel.Text = "Time taken: ";
             // 
             // label7
             // 
@@ -148,6 +165,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.timeLabel2);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label5);
@@ -161,6 +179,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(309, 191);
             this.panel2.TabIndex = 1;
+            // 
+            // timeLabel2
+            // 
+            this.timeLabel2.AutoSize = true;
+            this.timeLabel2.Location = new System.Drawing.Point(169, 167);
+            this.timeLabel2.Name = "timeLabel2";
+            this.timeLabel2.Size = new System.Drawing.Size(66, 13);
+            this.timeLabel2.TabIndex = 33;
+            this.timeLabel2.Text = "Time taken: ";
             // 
             // label9
             // 
@@ -253,6 +280,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.timeLabel3);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label6);
@@ -266,6 +294,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(309, 191);
             this.panel3.TabIndex = 2;
+            // 
+            // timeLabel3
+            // 
+            this.timeLabel3.AutoSize = true;
+            this.timeLabel3.Location = new System.Drawing.Point(169, 167);
+            this.timeLabel3.Name = "timeLabel3";
+            this.timeLabel3.Size = new System.Drawing.Size(66, 13);
+            this.timeLabel3.TabIndex = 33;
+            this.timeLabel3.Text = "Time taken: ";
             // 
             // label10
             // 
@@ -335,6 +372,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Add on top";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -355,12 +393,61 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Мультипликативный";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(957, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(93, 17);
+            this.radioButton1.TabIndex = 34;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Channel 0 (All)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(957, 42);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(73, 17);
+            this.radioButton2.TabIndex = 35;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Channel 1";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(957, 65);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(73, 17);
+            this.radioButton3.TabIndex = 36;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Channel 2";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(957, 88);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(73, 17);
+            this.radioButton4.TabIndex = 37;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Channel 3";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
             // NoizeGenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 212);
+            this.ClientSize = new System.Drawing.Size(1101, 212);
+            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "NoizeGenForm";
@@ -381,6 +468,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -414,5 +502,12 @@
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label timeLabel2;
+        private System.Windows.Forms.Label timeLabel3;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }

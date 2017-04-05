@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Zotin_1
     {
         ResultBox OwnerForm;
         string mode;
+        Stopwatch stopwatch = new Stopwatch();
         public ColorBalanceForm(ResultBox ownerForm, string Mode = "RGB")
         {
             InitializeComponent();
@@ -158,7 +160,11 @@ namespace Zotin_1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
             setR();
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         private void trackBar4_Scroll(object sender, EventArgs e)
@@ -168,12 +174,20 @@ namespace Zotin_1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
             setG();
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
             setB();
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         private void trackBar5_Scroll(object sender, EventArgs e)
@@ -194,6 +208,9 @@ namespace Zotin_1
         //h
         private void button4_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
+
             for (int i = 0; i < OwnerForm.localImage.Width; i++)
                 for (int j = 0; j < OwnerForm.localImage.Height; j++)
                 {
@@ -213,11 +230,17 @@ namespace Zotin_1
                     OwnerForm.localImage.SetPixel(i, j, color);
                 }
             OwnerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         //s
         private void button5_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
+
             for (int i = 0; i < OwnerForm.localImage.Width; i++)
                 for (int j = 0; j < OwnerForm.localImage.Height; j++)
                 {
@@ -236,11 +259,17 @@ namespace Zotin_1
                     OwnerForm.localImage.SetPixel(i, j, color);
                 }
             OwnerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         //l
         private void button6_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
+
             for (int i = 0; i < OwnerForm.localImage.Width; i++)
                 for (int j = 0; j < OwnerForm.localImage.Height; j++)
                 {
@@ -259,11 +288,18 @@ namespace Zotin_1
                     OwnerForm.localImage.SetPixel(i, j, color);
                 }
             OwnerForm.updatePicturebox();
+
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         //v
         private void button7_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
+
             for (int i = 0; i < OwnerForm.localImage.Width; i++)
                 for (int j = 0; j < OwnerForm.localImage.Height; j++)
                 {
@@ -282,6 +318,9 @@ namespace Zotin_1
                     OwnerForm.localImage.SetPixel(i, j, color);
                 }
             OwnerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         private void trackBar8_Scroll(object sender, EventArgs e)
@@ -292,6 +331,9 @@ namespace Zotin_1
         //c
         private void button8_Click(object sender, EventArgs e)
         {
+            stopwatch.Reset();
+            stopwatch.Start();
+
             double contrastValue = Math.Pow((100.0 + (trackBar8.Value*10)) / 100.0, 2);
             for (int i = 0; i < OwnerForm.localImage.Width; i++)
                 for (int j = 0; j < OwnerForm.localImage.Height; j++)
@@ -319,6 +361,9 @@ namespace Zotin_1
                     OwnerForm.localImage.SetPixel(i, j, Color.FromArgb(r, g, b));
                 }
             OwnerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button9_Click(object sender, EventArgs e)

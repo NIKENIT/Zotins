@@ -37,7 +37,7 @@ namespace Zotin_1
         public Bitmap applyImpulseNoize(string colorMode, Bitmap originalImage, int noizeLevel, double impulseK, int colorChannel = 0)
         {
             Bitmap result = new Bitmap(originalImage);
-            int noisepixel = (int)((originalImage.Width * originalImage.Height) * (noizeLevel / 100));
+            int noisepixel = (int)(originalImage.Width * originalImage.Height * noizeLevel / 100);
             int x, y, randomValue;
             Color color, tempColor;
 

@@ -32,9 +32,11 @@ namespace Zotin_1
 
         private void HystogramForm_Load(object sender, EventArgs e)
         {
+         
             chartR.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             chartR.Series.Clear();
             Series seriesR = this.chartR.Series.Add(rName);
+            seriesR.IsVisibleInLegend = false;
             seriesR.ChartType = SeriesChartType.Column;
             for (int i = 1; i < r.Length; i++)
             {
@@ -45,6 +47,7 @@ namespace Zotin_1
             chartG.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             chartG.Series.Clear();
             Series seriesG = this.chartG.Series.Add(gName);
+            seriesG.IsVisibleInLegend = false;
             seriesG.ChartType = SeriesChartType.Column;
             for (int i = 1; i < g.Length; i++)
             {
@@ -55,14 +58,13 @@ namespace Zotin_1
             chartB.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             chartB.Series.Clear();
             Series seriesB = this.chartB.Series.Add(bName);
+            seriesB.IsVisibleInLegend = false;
             seriesB.ChartType = SeriesChartType.Column;
             for (int i = 1; i < b.Length; i++)
             {
                 seriesB.Points.AddXY(i, b[i]);
             }
             seriesB.Color = Color.Blue;
-
-
         }
     }
 }

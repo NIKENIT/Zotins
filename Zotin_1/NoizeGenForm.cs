@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,12 +16,11 @@ namespace Zotin_1
         ResultBox ownerForm;
         string mode;
         int colorLayer;
-
+        Stopwatch stopwatch = new Stopwatch();
         public NoizeGenForm(ResultBox OwnerForm, string Mode = "RGB")
         {
             InitializeComponent();
 
-            InitializeComponent();
             ownerForm = OwnerForm;
             this.FormClosing += new FormClosingEventHandler(NGFormClosing);
             mode = Mode;
@@ -75,47 +75,111 @@ namespace Zotin_1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int colorLayer = determineChannel();
+
             NoizeGenerator ng = new NoizeGenerator();
             Bitmap result = ng.applyImpulseNoize(mode, ownerForm.originalImage, trackBar1.Value, (int)numericUpDown1.Value, colorLayer);
             ownerForm.localImage = new Bitmap(result);
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
+        }
+
+        private int determineChannel()
+        {
+            if (radioButton1.Checked)
+                return 0;
+            else if (radioButton2.Checked)
+                return 1;
+            else if (radioButton3.Checked)
+                return 2;
+            else if (radioButton4.Checked)
+                return 3;
+            else
+                return -1;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int colorLayer = determineChannel();
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = ng.applyImpulseNoize(mode, ownerForm.localImage, trackBar1.Value, (int)numericUpDown1.Value, colorLayer);
+            Bitmap result = new Bitmap(ng.applyImpulseNoize(mode, ownerForm.localImage, trackBar1.Value, (int)numericUpDown1.Value, colorLayer));
             ownerForm.localImage = new Bitmap(result);
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int colorLayer = determineChannel();
+
             NoizeGenerator ng = new NoizeGenerator();
             Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.originalImage, trackBar2.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value, colorLayer);
             ownerForm.localImage = new Bitmap(result);
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel2.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int colorLayer = determineChannel();
+
             NoizeGenerator ng = new NoizeGenerator();
             Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.localImage, trackBar2.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value, colorLayer);
             ownerForm.localImage = new Bitmap(result);
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel2.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int colorLayer = determineChannel();
+
             NoizeGenerator ng = new NoizeGenerator();
             Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.originalImage, trackBar3.Value, (int)numericUpDown4.Value, (int)numericUpDown5.Value, colorLayer);
             ownerForm.localImage = new Bitmap(result);
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel3.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void NoizeGenForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int colorLayer = determineChannel();
+
+            NoizeGenerator ng = new NoizeGenerator();
+            Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.localImage, trackBar3.Value, (int)numericUpDown4.Value, (int)numericUpDown5.Value, colorLayer);
+            ownerForm.localImage = new Bitmap(result);
+            ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel3.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
         }
     }
 }

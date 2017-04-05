@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,20 +28,32 @@ namespace Zotin_1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.localImage = new Bitmap(ownerForm.originalImage.Width, ownerForm.originalImage.Height);
             ownerForm.updatePicturebox();
             //ownerForm.localImage = ApplyIdealReflectorMethod(ownerForm.originalImage);
             ApplyIdealReflectorMethod();
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.localImage = new Bitmap(ownerForm.originalImage.Width, ownerForm.originalImage.Height);
             ownerForm.updatePicturebox();
             //ownerForm.localImage = new Bitmap(ApplyAutoLevelsMethod(ownerForm.originalImage));
             ApplyAutoLevelsMethod();
             ownerForm.updatePicturebox();
+
+            stopwatch.Stop();
+            timeLabel.Text = "Time taken " + stopwatch.ElapsedMilliseconds;
         }
 
         //Идеология "Идеальный отражатель"
@@ -85,7 +98,7 @@ namespace Zotin_1
             int Rmax = 0, Gmax = 0, Bmax = 0;
             Color tempColor;
 
-            //находим минимумы R,G,B по изображению
+            //находим минимумы и максимумы R,G,B по изображению
             for (int x = 0; x < ownerForm.originalImage.Width; x++)
             {
                 for (int y = 0; y < ownerForm.originalImage.Height; y++)
