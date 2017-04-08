@@ -32,6 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Lab2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +75,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // Lab2
+            // 
+            this.Lab2.Location = new System.Drawing.Point(608, 82);
+            this.Lab2.Name = "Lab2";
+            this.Lab2.Size = new System.Drawing.Size(143, 41);
+            this.Lab2.TabIndex = 3;
+            this.Lab2.Text = "Lab2";
+            this.Lab2.UseVisualStyleBackColor = true;
+            this.Lab2.Click += new System.EventHandler(this.Lab2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 549);
+            this.Controls.Add(this.Lab2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button Lab2;
     }
 }
 

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApertureService.cs" />
     <Compile Include="ColorBalanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +77,18 @@
     </Compile>
     <Compile Include="ImageCorrectionForm.Designer.cs">
       <DependentUpon>ImageCorrectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab2Form.Designer.cs">
+      <DependentUpon>Lab2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinearFiltersChooserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinearFiltersChooserForm.Designer.cs">
+      <DependentUpon>LinearFiltersChooserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelSettingsChooser.cs">
       <SubType>Form</SubType>
@@ -113,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImageCorrectionForm.resx">
       <DependentUpon>ImageCorrectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab2Form.resx">
+      <DependentUpon>Lab2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinearFiltersChooserForm.resx">
+      <DependentUpon>LinearFiltersChooserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelSettingsChooser.resx">
       <DependentUpon>ModelSettingsChooser.cs</DependentUpon>

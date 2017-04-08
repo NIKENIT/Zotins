@@ -48,5 +48,16 @@ namespace Zotin_1
             else
                 MessageBox.Show("Изображение не существует");
         }
+
+        private void Lab2_Click(object sender, EventArgs e)
+        {
+            if (originalImage != null)
+            {
+                Lab2Form form = new Lab2Form(originalImage);
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show("Изображение не существует");
+        }
     }
 }
