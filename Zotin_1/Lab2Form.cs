@@ -234,5 +234,35 @@ namespace Zotin_1
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            double mseR = 0, mseG = 0, mseB = 0, mseInt = 0;
+            double psnrR = 0, psnrG = 0, psnrB = 0, psnrInt = 0;
+
+
+            Bitmap compareImage;
+            if (comboBox1.SelectedIndex == 0)
+            {
+                compareImage = new Bitmap(RGBImage);
+            }
+            else
+            {
+                compareImage = new Bitmap(YUVImage);
+            }
+
+            calculateMSE(compareImage, resultImage, out mseR, out mseG, out mseB, out mseInt);
+            calculatePSNR(compareImage, resultImage, out psnrR, out psnrG, out psnrB, out psnrInt);
+
+            MSERLabel.Text = "Difference R: " + Math.Round(mseR, 3);
+            MSEGLabel.Text = "Difference G: " + Math.Round(mseG, 3);
+            MSEBLabel.Text = "Difference B: " + Math.Round(mseB, 3);
+            MSEIntLabel.Text = "Difference Int: " + Math.Round(mseInt, 3);
+
+            PSNRRLabel.Text = "Difference R: " + Math.Round(psnrR, 3);
+            PSNRGLabel.Text = "Difference G: " + Math.Round(psnrG, 3);
+            PSNRBLabel.Text = "Difference B: " + Math.Round(psnrB, 3);
+            PSNRIntLabel.Text = "Difference Int: " + Math.Round(psnrInt, 3);
+        }
     }
 }

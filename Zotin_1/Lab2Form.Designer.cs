@@ -58,6 +58,7 @@
             this.MedianFilterLabel = new System.Windows.Forms.Label();
             this.meanFilterLabel = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultBox)).BeginInit();
             this.msePanel.SuspendLayout();
@@ -113,7 +114,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(559, 82);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 36);
+            this.button1.Size = new System.Drawing.Size(103, 36);
             this.button1.TabIndex = 4;
             this.button1.Text = "Сравнить изображения";
             this.button1.UseVisualStyleBackColor = true;
@@ -354,11 +355,22 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "Time Taken";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(668, 82);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 36);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Сравнить с оригиналом";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Lab2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 585);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.msePanel);
@@ -417,5 +429,6 @@
         public System.Windows.Forms.Label CutMiddleFilterLabel;
         public System.Windows.Forms.Label AdaptiveFilterLabel;
         public System.Windows.Forms.Label RecursiveFilterLabel;
+        private System.Windows.Forms.Button button5;
     }
 }
