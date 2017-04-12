@@ -14,14 +14,19 @@ namespace Zotin_1
     public partial class NoizeGenForm : Form
     {
         ResultBox ownerForm;
+        Lab2Form lab2OwnerForm;
         string mode;
         int colorLayer;
         Stopwatch stopwatch = new Stopwatch();
-        public NoizeGenForm(ResultBox OwnerForm, string Mode = "RGB")
+        public NoizeGenForm(Form OwnerForm, string Mode = "RGB")
         {
             InitializeComponent();
 
-            ownerForm = OwnerForm;
+            if (OwnerForm is ResultBox)
+                ownerForm = (ResultBox)OwnerForm;
+            else if (OwnerForm is Lab2Form)
+                lab2OwnerForm = (Lab2Form)OwnerForm;
+
             this.FormClosing += new FormClosingEventHandler(NGFormClosing);
             mode = Mode;
             colorLayer = parseModeIntoLayerCode(Mode);
@@ -29,7 +34,8 @@ namespace Zotin_1
 
         private void NGFormClosing(object sender, FormClosingEventArgs e)
         {
-            ownerForm.revertImage();
+            if (ownerForm != null)
+                ownerForm.revertImage();                  
         }
 
         public int parseModeIntoLayerCode(string mode)
@@ -79,10 +85,25 @@ namespace Zotin_1
             stopwatch.Start();
             int colorLayer = determineChannel();
 
+            Bitmap image;
+            if (ownerForm != null)
+                image = ownerForm.originalImage;
+            else
+                image = lab2OwnerForm.originalImage;
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = ng.applyImpulseNoize(mode, ownerForm.originalImage, trackBar1.Value, (int)numericUpDown1.Value, colorLayer);
-            ownerForm.localImage = new Bitmap(result);
-            ownerForm.updatePicturebox();
+            Bitmap result = ng.applyImpulseNoize(mode, image, trackBar1.Value, (int)numericUpDown1.Value, colorLayer);
+
+            if (ownerForm != null)
+            {
+                ownerForm.localImage = new Bitmap(result);
+                ownerForm.updatePicturebox();
+            }
+            else
+            {
+                lab2OwnerForm.resultImage = new Bitmap(result);
+                lab2OwnerForm.updateResultBox();
+            }
 
             stopwatch.Stop();
             timeLabel.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
@@ -108,10 +129,25 @@ namespace Zotin_1
             stopwatch.Start();
             int colorLayer = determineChannel();
 
+            Bitmap image;
+            if (ownerForm != null)
+                image = ownerForm.localImage;
+            else
+                image = lab2OwnerForm.resultImage;
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = new Bitmap(ng.applyImpulseNoize(mode, ownerForm.localImage, trackBar1.Value, (int)numericUpDown1.Value, colorLayer));
-            ownerForm.localImage = new Bitmap(result);
-            ownerForm.updatePicturebox();
+            Bitmap result = new Bitmap(ng.applyImpulseNoize(mode, image, trackBar1.Value, (int)numericUpDown1.Value, colorLayer));
+
+            if (ownerForm != null)
+            {
+                ownerForm.localImage = new Bitmap(result);
+                ownerForm.updatePicturebox();
+            }
+            else
+            {
+                lab2OwnerForm.resultImage = new Bitmap(result);
+                lab2OwnerForm.updateResultBox();
+            }
 
             stopwatch.Stop();
             timeLabel.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
@@ -123,10 +159,25 @@ namespace Zotin_1
             stopwatch.Start();
             int colorLayer = determineChannel();
 
+            Bitmap image;
+            if (ownerForm != null)
+                image = ownerForm.originalImage;
+            else
+                image = lab2OwnerForm.originalImage;
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.originalImage, trackBar2.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value, colorLayer);
-            ownerForm.localImage = new Bitmap(result);
-            ownerForm.updatePicturebox();
+            Bitmap result = ng.applyAdditiveNoize(mode, image, trackBar2.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value, colorLayer);
+
+            if (ownerForm != null)
+            {
+                ownerForm.localImage = new Bitmap(result);
+                ownerForm.updatePicturebox();
+            }
+            else
+            {
+                lab2OwnerForm.resultImage = new Bitmap(result);
+                lab2OwnerForm.updateResultBox();
+            }
 
             stopwatch.Stop();
             timeLabel2.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
@@ -138,10 +189,25 @@ namespace Zotin_1
             stopwatch.Start();
             int colorLayer = determineChannel();
 
+            Bitmap image;
+            if (ownerForm != null)
+                image = ownerForm.localImage;
+            else
+                image = lab2OwnerForm.resultImage;
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.localImage, trackBar2.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value, colorLayer);
-            ownerForm.localImage = new Bitmap(result);
-            ownerForm.updatePicturebox();
+            Bitmap result = ng.applyAdditiveNoize(mode, image, trackBar2.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value, colorLayer);
+
+            if (ownerForm != null)
+            {
+                ownerForm.localImage = new Bitmap(result);
+                ownerForm.updatePicturebox();
+            }
+            else
+            {
+                lab2OwnerForm.resultImage = new Bitmap(result);
+                lab2OwnerForm.updateResultBox();
+            }
 
             stopwatch.Stop();
             timeLabel2.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
@@ -153,10 +219,25 @@ namespace Zotin_1
             stopwatch.Start();
             int colorLayer = determineChannel();
 
+            Bitmap image;
+            if (ownerForm != null)
+                image = ownerForm.originalImage;
+            else
+                image = lab2OwnerForm.originalImage;
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.originalImage, trackBar3.Value, (int)numericUpDown4.Value, (int)numericUpDown5.Value, colorLayer);
-            ownerForm.localImage = new Bitmap(result);
-            ownerForm.updatePicturebox();
+            Bitmap result = ng.applyAdditiveNoize(mode, image, trackBar3.Value, (int)numericUpDown4.Value, (int)numericUpDown5.Value, colorLayer);
+
+            if (ownerForm != null)
+            {
+                ownerForm.localImage = new Bitmap(result);
+                ownerForm.updatePicturebox();
+            }
+            else
+            {
+                lab2OwnerForm.resultImage = new Bitmap(result);
+                lab2OwnerForm.updateResultBox();
+            }
 
             stopwatch.Stop();
             timeLabel3.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;
@@ -173,10 +254,25 @@ namespace Zotin_1
             stopwatch.Start();
             int colorLayer = determineChannel();
 
+            Bitmap image;
+            if (ownerForm != null)
+                image = ownerForm.localImage;
+            else
+                image = lab2OwnerForm.resultImage;
+
             NoizeGenerator ng = new NoizeGenerator();
-            Bitmap result = ng.applyAdditiveNoize(mode, ownerForm.localImage, trackBar3.Value, (int)numericUpDown4.Value, (int)numericUpDown5.Value, colorLayer);
-            ownerForm.localImage = new Bitmap(result);
-            ownerForm.updatePicturebox();
+            Bitmap result = ng.applyAdditiveNoize(mode, image, trackBar3.Value, (int)numericUpDown4.Value, (int)numericUpDown5.Value, colorLayer);
+
+            if (ownerForm != null)
+            {
+                ownerForm.localImage = new Bitmap(result);
+                ownerForm.updatePicturebox();
+            }
+            else
+            {
+                lab2OwnerForm.resultImage = new Bitmap(result);
+                lab2OwnerForm.updateResultBox();
+            }
 
             stopwatch.Stop();
             timeLabel3.Text = "Time taken: " + stopwatch.ElapsedMilliseconds;

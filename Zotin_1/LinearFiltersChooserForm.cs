@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace Zotin_1
         }
         Lab2Form ownerForm;
         int colorChannel = 0;
+        Stopwatch stopwatch;
 
         private void button1_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyMeanFilter("RGB", ownerForm.originalImage,
                                                     new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height), 
                                                     new Point((int)xSizeNumUpDown.Value, (int)ySizeNumUpDown.Value), colorChannel);
@@ -29,7 +34,9 @@ namespace Zotin_1
 
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
-            MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.meanFilterLabel.Text = "MeanFilter time: " + stopwatch.ElapsedMilliseconds;
         }
 
         public Bitmap applyMeanFilter(string colorMode, Bitmap image, Point imageSize, Point filterSize, int colorChannelIndex = 0)
@@ -120,6 +127,9 @@ namespace Zotin_1
 
         private void medianFilterButton_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyMedianFilter("RGB", ownerForm.originalImage,
                                         new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                                          new Point((int)xSizeNumUpDown.Value, (int)ySizeNumUpDown.Value), colorChannel);
@@ -128,7 +138,10 @@ namespace Zotin_1
 
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
-            MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+            //MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.MedianFilterLabel.Text = "MedianFilter time: " + stopwatch.ElapsedMilliseconds;
         }
 
         public Bitmap applyMedianFilter(string colorMode, Bitmap image, Point imageSize, Point filterSize, int colorChannelIndex = 0)
@@ -425,6 +438,9 @@ namespace Zotin_1
 
         private void JimCasaburiFilterButton_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             double threshold = (double)numericUpDown1.Value;
 
             ownerForm.resultImage = applyJimCasaburiFilter("RGB", ownerForm.originalImage,
@@ -435,11 +451,17 @@ namespace Zotin_1
 
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
-            MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+            //MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.JimFilterLabel.Text = "JimCasaburi time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void splitMiddleFilterButton_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applySplitMiddleFilter("RGB", ownerForm.originalImage,
                             new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                              new Point((int)xSizeNumUpDown.Value, (int)ySizeNumUpDown.Value), (int)dUpDown.Value,  colorChannel);
@@ -448,7 +470,10 @@ namespace Zotin_1
 
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
-            MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+            //MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.CutMiddleFilterLabel.Text = "CutMiddleFilter time: " + stopwatch.ElapsedMilliseconds;
         }
 
         public Bitmap applySplitMiddleFilter(string colorMode, Bitmap image, Point imageSize, Point filterSize, int d,  int colorChannelIndex = 0)
@@ -750,6 +775,9 @@ namespace Zotin_1
 
         private void RecursiveFilterButton_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyRecursiveFilter("RGB", ownerForm.originalImage,
                 new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                  new Point((int)xSizeNumUpDown.Value, (int)ySizeNumUpDown.Value), colorChannel);
@@ -758,11 +786,17 @@ namespace Zotin_1
 
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
-            MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+            //MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.RecursiveFilterLabel.Text = "RecursiveFilter time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void AdaptiveFilterButton_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyAdaptiveFilter(ownerForm.originalImage,
                                                         new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                                                          new Point((int)xSizeNumUpDown.Value, (int)ySizeNumUpDown.Value), colorChannel);
@@ -771,7 +805,10 @@ namespace Zotin_1
 
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
-            MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+            //MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.AdaptiveFilterLabel.Text = "AdaptiveFilter time: " + stopwatch.ElapsedMilliseconds;
         }
 
         public int adaptiveFilterProcess(Bitmap image, string colorMode, int x, int y, Point filterSize, Point imageSize, Point maxFilterSize)
@@ -948,6 +985,9 @@ namespace Zotin_1
 
         private void gaussianFilterButtom_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyGaussianBlurFilter("RGB", ownerForm.originalImage,
                                                             new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                                                              new Point((int)xSizeNumUpDown.Value, (int)ySizeNumUpDown.Value), colorChannel);
@@ -957,6 +997,9 @@ namespace Zotin_1
             long memory2 = GC.GetTotalMemory(false);
             long memory1 = GC.GetTotalMemory(true);
             MessageBox.Show("Memory2: " + memory2 + "\nMemory1: " + memory1);
+
+            stopwatch.Stop();
+            ownerForm.GaussFilterLabel.Text = "GaussianFilter time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
