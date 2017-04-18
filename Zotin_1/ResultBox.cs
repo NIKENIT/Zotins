@@ -139,7 +139,7 @@ namespace Zotin_1
             //}
         }
 
-        private double[] getGrayscaleHystogram(Bitmap image)
+        public static double[] getGrayscaleHystogram(Bitmap image)
         {
             double[] resultHystogram = new double[256];
             Color color; 

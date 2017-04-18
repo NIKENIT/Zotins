@@ -83,7 +83,7 @@ namespace Zotin_1
 
                     tempResults[3].image.SetPixel(x, y, color);
 
-                    int grayscale = (int)((color.R * 0.3) + (color.G * 0.59) + (color.B * 0.11));
+                    int grayscale = (int)((color.R * 0.299) + (color.G * 0.587) + (color.B * 0.114));
                     tempResults[4].image.SetPixel(x, y, Color.FromArgb(grayscale, grayscale, grayscale));
                 }
             }
