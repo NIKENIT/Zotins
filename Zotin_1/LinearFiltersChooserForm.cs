@@ -219,14 +219,14 @@ namespace Zotin_1
             return rezult;
         }
 
-        public double calculateGaussian(int x, double sigma)
+        public static double calculateGaussian(int x, double sigma)
         {
             // ?? correct maybe ??
             //return (1 / (2 * Math.PI * (Math.Pow(sigma, 2)))) * Math.Exp(-1 * (Math.Pow(x, 2) / (2 * Math.Pow(sigma, 2))));
             return (1 / (Math.Sqrt(2 * Math.PI) * sigma)) * Math.Exp(-1 * (Math.Pow(x, 2) / (2 * Math.Pow(sigma, 2))));
         }
 
-        public Bitmap applyGaussianBlurFilter(string colorMode, Bitmap image, Point imageSize, Point filterSize, int colorChannelIndex = 0)
+        public static Bitmap applyGaussianBlurFilter(string colorMode, Bitmap image, Point imageSize, Point filterSize, int colorChannelIndex = 0)
         {
             Bitmap rezult = new Bitmap(image);
 

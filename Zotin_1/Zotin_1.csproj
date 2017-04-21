@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApertureService.cs" />
+    <Compile Include="Canny.cs" />
     <Compile Include="ColorBalanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +134,7 @@
     <Compile Include="ResultBox.Designer.cs">
       <DependentUpon>ResultBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Segmentation.cs" />
     <EmbeddedResource Include="ColorBalanceForm.resx">
       <DependentUpon>ColorBalanceForm.cs</DependentUpon>
     </EmbeddedResource>

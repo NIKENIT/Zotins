@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace Zotin_1
     {
         Lab3Form ownerForm;
         List<List<bool>> mask = new List<List<bool>>();
+        int colorIndex = 0;
+        Stopwatch stopwatch;
+
         public LocalMethods(Lab3Form OwnerForm)
         {
             InitializeComponent();
@@ -30,10 +34,16 @@ namespace Zotin_1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyBernzenThersholding(ownerForm.originalImage,
                                         new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                                         new Point((int)numericUpDownX.Value, (int)numericUpDownY.Value), grayscaleCheckBox.Checked);
             ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.bernsenLabel.Text = "Bernsen time: " + stopwatch.ElapsedMilliseconds;
         }
 
         public Bitmap convertImageToGrayscale(Bitmap image)
@@ -199,20 +209,32 @@ namespace Zotin_1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = applyNiblackThersholding(ownerForm.originalImage,
                             new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                             new Point((int)numericUpDownX.Value, (int)numericUpDownY.Value), 0.2, grayscaleCheckBox.Checked);
             ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.niblackLabel.Text = "Niblack time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             int realThreshold = 0;
             ownerForm.resultImage = applyOtzuThersholding(ownerForm.originalImage,
                 new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height), 
                 (int)numericUpDownOtzu.Value, out realThreshold);
             ownerForm.updateResultBox();
             label3.Text = "ResultThreshhold: " + realThreshold;
+
+            stopwatch.Stop();
+            ownerForm.otzuLabel.Text = "Otzu time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -222,10 +244,16 @@ namespace Zotin_1
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = Morphology.applyDillation("RGB", 0, ownerForm.originalImage,
                 new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                 mask, new Point(mask.Count, mask[0].Count));
             ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.DilationLabel.Text = "Dillation time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -262,10 +290,16 @@ namespace Zotin_1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             ownerForm.resultImage = Morphology.applyErosion("RGB", 0, ownerForm.originalImage,
                 new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
                 mask, new Point(mask.Count, mask[0].Count));
             ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.erosionLabel.Text = "Erosion time: " + stopwatch.ElapsedMilliseconds;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -283,6 +317,101 @@ namespace Zotin_1
         private void button8_Click(object sender, EventArgs e)
         {
             ownerForm.resetOriginalImage();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Bitmap image = new Bitmap(ownerForm.originalImage);
+            if(colorIndex == 4)
+            {
+                image = convertImageToGrayscale(ownerForm.originalImage);
+            }
+
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            ownerForm.resultImage = Segmentation.applyRobertsSegmentation("RGB", colorIndex, image,
+                    new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
+                    (float)numericUpDownAmp.Value, (double)numericUpDownRobertsThreshold.Value);
+            ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.robertsLabel.Text = "Roberts time: " + stopwatch.ElapsedMilliseconds;
+        }
+
+        private void radioButtonRGB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonRGB.Checked)
+                colorIndex = 0;
+        }
+
+        private void radioButtonR_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonR.Checked)
+                colorIndex = 1;
+        }
+
+        private void radioButtonG_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonG.Checked)
+                colorIndex = 2;
+        }
+
+        private void radioButtonB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonB.Checked)
+                colorIndex = 3;
+        }
+
+        private void radioButtonGrayscale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonGrayscale.Checked)
+                colorIndex = 4;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Bitmap image = new Bitmap(ownerForm.originalImage);
+            if (colorIndex == 4)
+            {
+                image = convertImageToGrayscale(ownerForm.originalImage);
+            }
+
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            ownerForm.resultImage = Segmentation.applySobelSegmentation("RGB", colorIndex, image,
+                    new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
+                    (float)numericUpDownAmp.Value, (double)numericUpDownRobertsThreshold.Value);
+            ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.sobelLabel.Text = "Sobel time: " + stopwatch.ElapsedMilliseconds;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Bitmap image = new Bitmap(ownerForm.originalImage);
+            if (colorIndex == 4)
+            {
+                image = convertImageToGrayscale(ownerForm.originalImage);
+            }
+
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            Bitmap gauss = LinearFiltersChooserForm.applyGaussianBlurFilter("RGB", ownerForm.originalImage, new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height), new Point(3, 3));
+
+            //ownerForm.resultImage = Segmentation.applyCannySegmentation("RGB", colorIndex, image,
+            //        new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height),
+            //        (int)numericUpDownMask.Value, (double)numericUpDownSigma.Value, (float)numericUpDownAmp.Value, (double)numericUpDownRobertsThreshold.Value);
+            ownerForm.resultImage = Segmentation.applyCannySegmentation2("RGB", colorIndex, image,
+                new Point(ownerForm.originalImage.Width, ownerForm.originalImage.Height), gauss);
+
+            ownerForm.updateResultBox();
+
+            stopwatch.Stop();
+            ownerForm.laplasLabel.Text = "Laplas time: " + stopwatch.ElapsedMilliseconds;
         }
     }
 }
